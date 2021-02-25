@@ -1,18 +1,18 @@
 buildscript {
-  repositories {
-    jcenter()
-    mavenCentral()
-    google()
-  }
-  dependencies {
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-    classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
-  }
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
+    }
 }
 
 plugins {
-  id "com.jfrog.bintray" version "1.8.4"
-  id 'com.palantir.git-version' version '0.12.2'
+    id "com.jfrog.bintray" version "1.8.4"
+    id 'com.palantir.git-version' version '0.12.2'
 }
 
 version gitVersion()
@@ -26,12 +26,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 sourceSets {
-  main {
-    proto {
-      srcDir 'include'
-      srcDir 'proto'
+    main {
+        proto {
+            srcDir 'include'
+            srcDir 'proto'
+        }
     }
-  }
 }
 
 jar {
@@ -51,11 +51,9 @@ repositories {
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'io.grpc:grpc-okhttp:1.12.0'
-  implementation('io.grpc:grpc-protobuf:1.12.0'){
-    exclude group: 'com.google.protobuf', module: 'protobuf-javalite'
-  }
-  compile 'io.grpc:grpc-stub:1.12.0'
+  compile 'io.grpc:grpc-okhttp:1.35.0'
+  compile 'io.grpc:grpc-protobuf:1.35.0'
+  compile 'io.grpc:grpc-stub:1.35.0'
   compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
 }
 
@@ -74,7 +72,7 @@ protobuf {
   }
   plugins {
     grpc {
-      artifact = 'io.grpc:protoc-gen-grpc-java:1.12.0'
+      artifact = 'io.grpc:protoc-gen-grpc-java:1.35.0'
     }
   }
   generateProtoTasks {
